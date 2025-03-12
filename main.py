@@ -96,4 +96,5 @@ def calculadora():
 # ---------------------------------------
 # ✅ Ejecutar calculadora
 # ---------------------------------------
+if __name__ == "__main__":
     calculadora()
