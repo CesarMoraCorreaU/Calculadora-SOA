@@ -60,7 +60,7 @@ def calculadora():
             break
 
         if opcion not in ["suma", "resta", "multiplicación","multiplicacion", "division", "división"]:
-            print("⚠️ Operación no válida. Intente de nuevo.")
+            print("⚠️  Error: Opción inválida. Debe ingresar exactamente 'suma', 'resta', 'multiplicación', 'división' o 'salir'.")
             continue
 
         try:
@@ -68,6 +68,11 @@ def calculadora():
             b = input("➡️ Ingrese el segundo número (positivo): ").strip()
 
             a, b = int(a), int(b)
+            
+            # Validación de números negativos
+            if a < 0 or b < 0:
+                print("⚠️ Error: Solo se permiten números enteros positivos.")
+                continue
             
             # Ejecución de la operación seleccionada
             if opcion == "suma":
@@ -90,7 +95,7 @@ def calculadora():
                     print(f"✅ El resultado de {a} ÷ {b} es: {resultado}")
 
         except ValueError:
-            print("⚠️ Entrada no válida. Debes ingresar números enteros positivos.")
+            print("⚠️  Entrada no válida. Debes ingresar números enteros positivos.")
 
 
 # ---------------------------------------
