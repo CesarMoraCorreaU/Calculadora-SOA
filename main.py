@@ -1,109 +1,45 @@
-# ---------------------------------------
-# ✅ Función para sumar (SOA)
-# ---------------------------------------
-def sumar(a, b):
-    c = b  # iguala el futuro retultado ==> b
-    while a > 0:
-        c += 1  # Incrementa en 1 c
-        a -= 1  # Decrementa en 1 a
-    return c  # Resultado de la suma
+# main.py
 
+# IMPORTAMOS LAS FUNCIONES DE INTERFAZ
+from interfaz import mostrar_menu, solicitar_numero
 
-# ---------------------------------------
-# ✅ Función para restar (SOA)
-# ---------------------------------------
-def restar(a, b):
-    if a >= b:
-        # a es mayor o igual que b
-        c = a
-        while b > 0:
-            c -= 1
-            b -= 1
-        return c
-    else:
-        # a es menor que b
-        c = b
-        while a > 0:
-            c -= 1
-            a -= 1
-        return -c
-# ---------------------------------------
-# ✅ Función para multiplicar (SOA)
-# ---------------------------------------
-def multiplicar(a, b):
-    c = 0  # Acumulador
-    while b > 0:
-        c = sumar(c, a)  # Suma a al acumulador c
-        b -= 1
-    return c  # Resultado de la multiplicación
+# IMPORTAMOS LAS OPERACIONES (asegúrate de que existan en operaciones.py o en archivos separados)
+from operaciones.sumar import sumar
+from operaciones.restar import restar
+from operaciones.multiplicar import multiplicar
+from operaciones.dividir import dividir
 
-
-# ---------------------------------------
-# ✅ Función para dividir (SOA)
-# ---------------------------------------
-def dividir(a, b):
-    if b == 0:
-        print("❌ No se puede dividir por cero.")  # Muestra un mensaje
-        return "Math Error"  # Termina la función devolviendo un valor nulo
-
-    cociente = 0
-    while a >= b:
-        a = restar(a, b)  # Resta b de a
-        cociente = sumar(cociente, 1)  # Aumenta el cociente en 1
-    return cociente  # Resultado de la división entera
-
-
-# ---------------------------------------
-# ✅ Función principal de la calculadora
-# ---------------------------------------
 def calculadora():
     while True:
-        print("\n🧮 Calculadora SOA - Operaciones disponibles:")
-        print("👉 suma, resta, multiplicación, división o salir")
-        opcion = input("➡️ Elige una opción: ").strip().lower()
+        opcion = mostrar_menu()
 
         if opcion == "salir":
             print("👋 ¡Gracias por usar la calculadora SOA!")
             break
 
-        if opcion not in ["suma", "resta", "multiplicación","multiplicacion", "division", "división"]:
+        if opcion not in ["suma", "resta", "multiplicación", "multiplicacion", "division", "división"]:
             print("⚠️  Error: Opción inválida. Debe ingresar exactamente 'suma', 'resta', 'multiplicación', 'división' o 'salir'.")
             continue
 
-        try:
-            a = input("➡️ Ingrese el primer número (positivo): ").strip()
-            b = input("➡️ Ingrese el segundo número (positivo): ").strip()
+        a = solicitar_numero("➡️ Ingrese el primer número (entero positivo): ")
+        b = solicitar_numero("➡️ Ingrese el segundo número (entero positivo): ")
 
-            a, b = int(a), int(b)
-            
-            # Validación de números negativos
-            if a < 0 or b < 0:
-                print("⚠️ Error: Solo se permiten números enteros positivos.")
-                continue
-            
-            # Ejecución de la operación seleccionada
-            if opcion == "suma":
-                resultado = sumar(a, b)
-                print(f"✅ El resultado de {a} + {b} es: {resultado}")
+        # Ejecución de la operación seleccionada
+        if opcion == "suma":
+            resultado = sumar(a, b)
+            print(f"✅ El resultado de {a} + {b} es: {resultado}")
 
-            elif opcion == "resta":
-                    resultado = restar(a, b)
-                    print(f"✅ El resultado de {a} - {b} es: {resultado}")
+        elif opcion == "resta":
+            resultado = restar(a, b)
+            print(f"✅ El resultado de {a} - {b} es: {resultado}")
 
-            elif opcion in ["multiplicacion", "multiplicación"]:
-                resultado = multiplicar(a, b)
-                print(f"✅ El resultado de {a} × {b} es: {resultado}")
+        elif opcion in ["multiplicacion", "multiplicación"]:
+            resultado = multiplicar(a, b)
+            print(f"✅ El resultado de {a} × {b} es: {resultado}")
 
-            elif opcion in ["division", "división"]:
-                    resultado = dividir(a, b)
-                    print(f"✅ El resultado de {a} ÷ {b} es: {resultado}")
+        elif opcion in ["division", "división"]:
+            resultado = dividir(a, b)
+            print(f"✅ El resultado de {a} ÷ {b} es: {resultado}")
 
-        except ValueError:
-            print("⚠️  Entrada no válida. Debes ingresar números enteros positivos.")
-
-
-# ---------------------------------------
-# ✅ Ejecutar calculadora
-# ---------------------------------------
 if __name__ == "__main__":
     calculadora()
