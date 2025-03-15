@@ -13,13 +13,20 @@ def sumar(a, b):
 # ✅ Función para restar (SOA)
 # ---------------------------------------
 def restar(a, b):
-    c = a  # iguala el futuro retultado ==> a
-    while b > 0:
-        c -= 1  # Decrementa c
-        b -= 1  # Decrementa b
-    return c  # Resultado de la resta
-
-
+    if a >= b:
+        # a es mayor o igual que b
+        c = a
+        while b > 0:
+            c -= 1
+            b -= 1
+        return c
+    else:
+        # a es menor que b
+        c = b
+        while a > 0:
+            c -= 1
+            a -= 1
+        return -c
 # ---------------------------------------
 # ✅ Función para multiplicar (SOA)
 # ---------------------------------------
@@ -80,9 +87,6 @@ def calculadora():
                 print(f"✅ El resultado de {a} + {b} es: {resultado}")
 
             elif opcion == "resta":
-                if a < b:
-                    print("⚠️ Error: El primer número debe ser mayor o igual al segundo para esta resta.")
-                else:
                     resultado = restar(a, b)
                     print(f"✅ El resultado de {a} - {b} es: {resultado}")
 
