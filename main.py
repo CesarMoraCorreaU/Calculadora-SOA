@@ -1,9 +1,7 @@
-# main.py
-
-# IMPORTAMOS LAS FUNCIONES DE INTERFAZ
+#LA FUNCION DE INTERFAZ
 from interfaz import mostrar_menu, solicitar_numero
 
-# IMPORTAMOS LAS OPERACIONES (asegúrate de que existan en operaciones.py o en archivos separados)
+#LAS OPERACIONES 
 from operaciones.sumar import sumar
 from operaciones.restar import restar
 from operaciones.multiplicar import multiplicar
